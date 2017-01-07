@@ -9,4 +9,26 @@ layout: default
 <ol>
   <li>Login to the AWS Lambda console</li>
   <li>Click on <strong>[Create a Lambda function]</strong></li>
+  <li>Select the <strong>hello-world</strong> blueprint for <strong>Node.js 4.3</strong></li>
+  <li>Click on <strong>[Next]</strong></li>
+  <li>For Name enter <strong>hello-world</strong></li>
+  <li>For Description enter <strong>A starter AWS Lambda function</strong></li>
+  <li>For Runtime make sure that <strong>Node.js 4.3</strong> is selected</li>
+  <li>For Code entry type make sure that <strong>Edit code inline</strong> is selected and enter the following in the code box:
+    <code>
+      'use strict';
+
+console.log('Loading hello-world function');
+
+exports.handler = (event, context, callback) => {
+    callback(null, "Greetings and salutations.");  // Make first contact
+};
+    </code>
+  </li>
+  <li>For Handler make sure <strong>index.handler</strong> entered</li>
+  <li>For Role select <strong>Choose an existing role</strong></li>
+  <li>For Existing Role select <strong>lambda_basic_execution</strong></li>
+  <li>Leave the rest of the settings as they are and click on <strong>[Next]</strong></li>
+  <li>Review the settings and click on <strong>[Create function]</strong></li>
+  <li>Click on <strong>[Test]</strong> and then <strong>[Save and test]</strong> the result "Greetings and salutations" should be returned</li>
 </ol>
