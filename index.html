@@ -444,6 +444,16 @@ var configuration =
   <li><strong>ENJOY</strong></li>
 </ol>
 
+<h2>Credits:</h2>
+<h5>At the time of this project I couldn't find a single walkthrough for using Cognito with a webapp, only for iOS or Android. I found several how-tos describing parts of the answer and have pieced them together to create this document. I have included those sources below.</h5>
+<ul>
+  <li>
+    <a href="https://youtu.be/bFpMTdy0ogU">Google API oauth flow with node.js</a> YouTube video created by Michal Stefanow. Before implementing the Cognito Identity Pool you have to first understand Google+ oauth flow itself. This was the best walkthrough I found for implementing it in a single-page webapp using Node.js and Angular.
+  </li>
+  <li>
+    <a href="https://auth0.com/docs/integrations/aws-api-gateway">Amazon API Gateway Tutorial by Auth0</a> A modification of the standard Pet Store app using IAM to secure the API Gateway. This walkthrough focuses on using Auth0's own service rather than Cognito but reveals the process of securing and accessing API Gateway using temporary credentials. To be honest, in a public-facing production environment I would recommend using Auth0 as they support multiple identity providers which they maintain preventing you from constantly updating your code. You will need to create an Auth0 account to complete their tutorial but they give you a 30 day free trial.
+  </li>
+</ul>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="assets/js/lightbox.min.js"></script>
