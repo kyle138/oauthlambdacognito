@@ -17,4 +17,7 @@ img {
 a img {
   width: 300px;
 }
-ol ol { list-style-type: lower-alpha; }
+ol ol {
+  list-style-type: lower-alpha;
+  margin-bottom: 0px;
+}
