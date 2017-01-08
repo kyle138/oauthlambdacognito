@@ -77,3 +77,52 @@ exports.handler = (event, context, callback) => {
   <li>Click on <strong>[Generate SDK]</strong></li>
   <li>Download and save the generated <strong>javascript_{date}.zip</strong> file as it will be needed in Step 10.5</li>
 </ol>
+
+<h2>Step 3: Create S3 bucket to host the single-page webapp</h2>
+<h5>The frontend html and js files will be hosted in S3. A bucket will need to be created and configured for website hosting.</h5>
+
+<ol>
+  <li>Login to the AWS S3 console</li>
+  <li>Click on <strong>[Create Bucket]</strong></li>
+  <li>Give the bucket a globally unique name, select a region, and click on <strong>[Create]</strong></li>
+  <li>Select the new bucket, click on <strong>[Properties]</strong> and click on <strong>Permissions</strong></li>
+  <li>Click on <strong>[Add bucket policy]</strong> and enter the following: (replace NAMEOFBUCKET below with the name of the bucket you just created)
+  <pre><code>
+    {
+    	"Version": "2012-10-17",
+    	"Statement": [
+    		{
+    			"Sid": "PublicReadGetObject",
+    			"Effect": "Allow",
+    			"Principal": "*",
+    			"Action": "s3:GetObject",
+    			"Resource": "arn:aws:s3:::NAMEOFBUCKET/*"
+    		}
+    	]
+    }
+  </code></pre>
+  </li>
+  <li>Click on <strong>Static Website Hosting</strong> > <strong>Enable website hosting</strong></li>
+  <li>For Index Document enter <strong>index.html</strong> and click <strong>Save</strong></li>
+  <li>Copy the Endpoint: link provided as we will be using it in the Step 4.8.b and Step 10.3.a</li>
+</ol>
+<img src="images/3.1-S3-CreateBucket.png" alt="S3 - Create Bucket" />
+<img src="images/3.2-S3-AddPolicy.png" alt="S3 - Add Policy" />
+<img src="images/3.3-S3-EnableWebsiteHosting.png" alt="S3 - Enable Website Hosting" />
+<img src="images/3.4-S3-Endpoint.png" alt="S3 - Get Endpoint" />
+
+<h2>Step 4: Create Project and Enable Google+ API in Google Developer Console</h2>
+<h5>A Web Identity Federation provider will be used to handle authentication so that end users can use an account they already have rather than creating a separate one for this page. In this example we will use Google+.</h5>
+
+<ol>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+  <li></li>
+</ol>
