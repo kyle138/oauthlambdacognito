@@ -381,18 +381,18 @@ exports.handler = (event, context, callback) => {
     Enter the following for <strong>Policy Document</strong> making sure to replace the <strong>Resource</strong> value with the ARN string you copied in Step 2.22 :
     <pre><code>
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Action": [
-                "execute-api:*"
-            ],
-            "Resource": [
-           "arn:aws:execute-api:us-west-2:304786516436:miuk21dh0g/*/GET/sample"
-            ]
-        }
-    ]
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "execute-api:*"
+      ],
+      "Resource": [
+        "arn:aws:execute-api:us-west-2:304786516436:miuk21dh0g/*/GET/sample"
+      ]
+    }
+  ]
 }
     </code></pre>
   </li>
