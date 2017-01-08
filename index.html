@@ -173,6 +173,23 @@ exports.handler = (event, context, callback) => {
   <img src="images/4.10-GoogleAPI-downloadCredentials.png" alt="GAPI - Download Credentials" />
 </a>
 
+<h2>Step 5: Create Cognito Identity Pool</h2>
+<h5>Users authenticated with Google+ will assume a Cognito Auth role which allows them access to the API Gateway.</h5>
+<ol>
+  <li>Login to the AWS Cognito console</li>
+  <li>Click on <strong>[Manage Federated Identities]</strong></li>
+  <li>For <strong>Identity Pool Name</strong> enter your application name</li>
+  <li>Expand <strong>Authentication Providers</strong> and select <strong>Google+</strong></li>
+  <li>Enter the <strong>Google Client ID</strong> from the credentials downloaded in Step 4.10</li>
+  <li>Click on <strong>[Create Pool]</strong></li>
+  <li>Cognito will create roles for Auth and Unauth users, click <strong>[Allow]</strong> (These will be edited in Step 9.11)</li>
+  <li>You can now select JavaScript from the Platform pulldown and download the latest SDK, however I prefer to include it from sdk.amazonaws.com instead</li>
+  <li>Click on <strong>[Go to dashboard]</strong> and <strong>Edit Identity pool</strong></li>
+  <li>Make note of the <strong>Identity Pool ID</strong>, we will use this in Step 10.3.d</li>
+</ol>
+<a href="images/5.6-Cog-CreatePool.png" data-lightbox="Step5" data-title="Cognito - Create Pool">
+  <img src="images/5.6-Cog-CreatePool.png" alt="Cognito - Create Pool" />
+</a>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="assets/js/lightbox.min.js"></script>
