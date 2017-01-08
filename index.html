@@ -255,6 +255,118 @@ exports.handler = (event, context, callback) => {
   <img src="images/6.17-Lam-genAuthUrl-Configure2.png" alt="Lambda - genAuthUrl - Configure" />
 </a>
 
+<h2>Step 7: Lambda - generateToken</h2>
+<h5>The code received from the Google+ callback will need to be exchanged for identity tokens. This function also retrieves the email account of the user logging in and checks its domain to see if it is allowed. It returns the tokens and email account in a JSON object.</h5>
+<ol>
+  <li>
+    Download and save the following zip file:
+    <a href="https://github.com/kyle138/oauthlambda-generateToken/releases/download/1.0.0/oauthlambda-generateToken.zip">https://github.com/kyle138/oauthlambda-generateToken/releases/download/1.0.0/oauthlambda-generateToken.zip</a>
+  </li>
+  <li>Login to the AWS Lambda console</li>
+  <li>Click on <strong>[Create a Lambda function]</strong></li>
+  <li>For Select Blueprint click on <strong>Blank Function</strong></li>
+  <li>For Configure Triggers click on <strong>[Next]</strong></li>
+  <li>For Name enter <strong>oauth-generateToken</strong></li>
+  <li>For Description enter <strong>'Lambda backend for googleapis oauth2 getToken'</strong></li>
+  <li>For RunTime select <strong>Node.js 4.3</strong></li>
+  <li>For Code Entry Type select <strong>Upload a .ZIP file</strong></li>
+  <li>Click on <strong>[Upload]</strong> and select the oauthlambda-generateToken.zip file you downloaded in Step 7.1</li>
+  <li>
+    Create three Environment Variables using the exact KEY names below and substituting the values you downloaded in Step 4.10:
+    <table>
+      <tr>
+        <td>
+          <strong>clientId</strong>
+        </td>
+        <td>
+          Enter the Google API Client ID that you downloaded in Step 4.10
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>clientSecret</strong>
+        </td>
+        <td>
+          Enter the Google API Client Secret that you downloaded in Step 4.10
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>redirectUrl</strong>
+        </td>
+        <td>
+          Enter the authorized redirect URI that you specified in Step 4.8.c
+        </td>
+      </tr>
+    </table>
+  </li>
+  <li>Leave Handler with the default <strong>index.handler</strong></li>
+  <li>For Role select <strong>Choose an existing role</strong></li>
+  <li>For Existing Role select <strong>lambda_basic_execution</strong></li>
+  <li>Leave Memory and Timeout with their default settings of <strong>128mb</strong> and <strong>3sec</strong></li>
+  <li>For VPC select <strong>No VPC</strong></li>
+  <li>Click on <strong>[Next]</strong></li>
+  <li>Review the settings and click on <strong>[Create function]</strong></li>
+  <li>We cannot test this function as it is expecting the code input which we do not have yet</li>
+</ol>
+
+<h2>Step 8: API Gateway - oAuth</h2>
+<h5>This API Gateway will serve the genAuthUrl and genToken Lambda functions created in the two previous sections. These will need to be called before the user is authenticated so these endpoints will not need authorization.</h5>
+<ol>
+  <li>Login to the AWS API Gateway console</li>
+  <li>Click on <strong>Create API</strong></li>
+  <li>Select <strong>New API</strong></li>
+  <li>For name enter <strong>oauthlambda</strong></li>
+  <li>For description enter <strong>'API for oauth backend functions'</strong></li>
+  <li>Click on <strong>[Create API]</strong></li>
+  <li>Pull down the <strong>Actions</strong> menu and select <strong>Create Resource</strong></li>
+  <li>For Resource Name enter <strong>generateauthurl</strong>, this should automatically populate Resource Path with <strong>/generateauthurl</strong></li>
+  <li>Check the <strong>Enable API Gateway CORS</strong> box</li>
+  <li>Click on <strong>[Create Resource]</strong></li>
+  <li>Make sure the newly created <strong>/generateauthurl</strong> resource is highlighted and pull down the <strong>Actions</strong> menu and select <strong>Create Method</strong></li>
+  <li>From the pulldown menu select <strong>GET</strong> and click the checkmark</li>
+  <li>For Integration Type select <strong>Lambda Function</strong></li>
+  <li>For Lambda Region select the region your Lambda function was created in</li>
+  <li>For Lambda Function enter <strong>oauth-generateAuthUrl</strong></li>
+  <li>Click on <strong>[Save]</strong></li>
+  <li>Click <strong>[OK]</strong></li>
+  <li>Click on <strong>Test</strong> and then click on <strong>[Test]</strong>, the Response Body should be the generated Google oauth URL.</li>
+  <li>In the Resources panel click on the root <strong>/</strong> resource to select it</li>
+  <li>Pull down the <strong>Actions</strong> menu and select <strong>Create Resource</strong></li>
+  <li>For Resource Name enter <strong>generatetoken</strong>, this should automatically populate resource path with <strong>/generatetoken</strong></li>
+  <li>Check the <strong>Enable API Gateway CORS</strong> box</li>
+  <li>Click on <strong>[Create Resource]</strong></li>
+  <li>Make sure the newly created <strong>/generatetoken</strong> resource is highlighted and pull down the <strong>Actions</strong> menu and select <strong>Create Method</strong></li>
+  <li>From the pulldown menu select <strong>GET</strong> and click the checkmark</li>
+  <li>For Integration Type select <strong>Lambda Function</strong></li>
+  <li>For Lambda Region select the region your Lambda function was created in</li>
+  <li>For Lambda Function enter <strong>oauth-generateToken</strong></li>
+  <li>Click on <strong>[Save]</strong></li>
+  <li>Click on <strong>[OK]</strong></li>
+  <li>Click on <strong>Method Request</strong></li>
+  <li>Click on <strong>URL Query String Parameters</strong></li>
+  <li>Click on <strong>+ Add query string</strong></li>
+  <li>For name enter the word <strong>code</strong> and click the checkmark</li>
+  <li>Click on <strong><-Method Execution</strong> to return to the Method page</li>
+  <li>Click on <strong>Integration Request</strong></li>
+  <li>Click on <strong>Body Mapping Templates</strong> to expand it</li>
+  <li>For Request Body Passthrough select <strong>Never</strong></li>
+  <li>Click on <strong>+ Add Mapping Template</strong> and type in <strong>application/json</strong> and click the checkmark</li>
+  <li>
+    In the <strong>Generate Template</strong> box enter the following:
+    <pre><code>
+      { "code": "$input.params('code')" }
+    </code></pre>
+  </li>
+  <li>Click on <strong>[Save]</strong></li>
+  <li>In the Resources panel click on the root <strong>/</strong> resource to select it</li>
+  <li>Pull down the <strong>Actions</strong> menu and select <strong>Deploy API</strong></li>
+  <li>For <strong>Deployment Stage</strong> select <strong>[New Stage]</strong></li>
+  <li>For <strong>Stage Name</strong> enter <strong>prod</strong></li>
+  <li>For <strong>Stage Description</strong> enter <strong>Production API Stage</strong></li>
+  <li>Click on <strong>[Deploy]</strong></li>
+  <li>This should take you to the <strong>prod Stage Editor</strong> page and the Invoke URL should be highlighted in blue at the top of the page. Copy this URL as you will need it in the Step 10.3</li>
+</ol>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="assets/js/lightbox.min.js"></script>
