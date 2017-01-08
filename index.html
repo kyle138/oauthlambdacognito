@@ -124,16 +124,32 @@ exports.handler = (event, context, callback) => {
 <h5>A Web Identity Federation provider will be used to handle authentication so that end users can use an account they already have rather than creating a separate one for this page. In this example we will use Google+.</h5>
 
 <ol>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
-  <li></li>
+  <li>Go to <a href="https://console.developers.google.com/">https://console.developers.google.com/</a></li>
+  <li>At the top, click on <strong>Project</strong> pull down and select <strong>Create Project</strong></li>
+  <li>Give the project a meaningful project name and click <strong>Create</strong></li>
+  <li>Click on <strong>Library</strong> > <strong>Social APIs</strong> > <strong>Google+ API</strong></li>
+  <li>Click on <strong>Enable</strong></li>
+  <li>Click on <strong>[Create credentials]</strong></li>
+  <li>
+    Select the following:
+    <ol type="a">
+      <li>Which API are you using? <strong>Google+ API</strong></li>
+      <li>Where will you be calling the API from? <strong>Web server node.js</strong></li>
+      <li>What data will you be accessing? <strong>User data</strong></li>
+      <li>Click on <strong>[What credentials do I need]</strong></li>
+    </ol>
+  </li>
+  <li>
+    Enter the following:
+    <ol type="a">
+      <li>Name: <strong>"Enter a meaningful client name"</strong></li>
+      <li>Authorized JavaScript origins: <strong>"The S3 endpoint provided in Step 3.8 minus the last /"</strong> eg: (http://cognito-login-test.s3-website-us-west-2.amazonaws.com)</li>
+      <li>Authorized redirect URIs: <strong>"The full path to your callback page"</strong> eg: (http://cognito-login-test.s3-website-us-west-2.amazonaws.com/gapicb/)</li>
+      <li>Click on <strong>[Create client ID]</strong></li>
+    </ol>
+  </li>
+  <li>Select your <strong>Email address</strong> and type in a <strong>"Product name shown to users"</strong> and click <strong>[Continue]</strong></li>
+  <li>Download the credentials (these will be needed in the following steps) and click on <strong>[Done]</strong></li>
 </ol>
 
 
