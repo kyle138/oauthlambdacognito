@@ -368,5 +368,41 @@ exports.handler = (event, context, callback) => {
   <li>This should take you to the <strong>prod Stage Editor</strong> page and the Invoke URL should be highlighted in blue at the top of the page. Copy this URL as you will need it in the Step 10.3</li>
 </ol>
 
+<h2>Step 9: IAM Role for Cognito Authenticated Users</h2>
+<h5>When a user is authenticated and their Google+ token is exchanged for a Cognito token they are given a temporary IAM SecretAccessKey which assumes the Cognito_<em>PoolName</em>Auth_Role created earlier. To control what access these authenticated users have a policy has to be created and attached to that role.</h5>
+<ol>
+  <li>Login to the AWS IAM console</li>
+  <li>Click on <strong>Policies</strong></li>
+  <li>Click on <strong>[Create Policy]</strong></li>
+  <li>Next to <strong>Create Your Own Policy</strong> click on <strong>[Select]</strong></li>
+  <li>For <strong>Policy Name</strong> enter <strong>Cognito_<em>PoolName</em>Auth_Policy</strong> replacing <em>PoolName</em> with the name you gave your Cognito Identity Pool in Step 5.3</li>
+  <li>For <strong>Description</strong> enter <strong>'IAM Policy for authenticated Cognito users.'</strong></li>
+  <li>
+    Enter the following for <strong>Policy Document</strong> making sure to replace the <strong>Resource</strong> value with the ARN string you copied in Step 2.22 :
+    <pre><code>
+      {
+          "Version": "2012-10-17",
+          "Statement": [
+              {
+                  "Effect": "Allow",
+                  "Action": [
+                      "execute-api:*"
+                  ],
+                  "Resource": [
+                 "arn:aws:execute-api:us-west-2:304786516436:miuk21dh0g/*/GET/sample"
+                  ]
+              }
+          ]
+      }
+    </code></pre>
+  </li>
+  <li>Click on <strong>[Validate Policy]</strong></li>
+  <li>If the policy validates click on <strong>[Create Policy]</strong></li>
+  <li>In the left panel click on <strong>Roles</strong></li>
+  <li>Click on the Cognito_<em>PoolName</em><strong>Auth</strong>_Role that was auto-created in Step 5.7</li>
+  <li>On the <strong>Permissions</strong> tab click on <strong>Attach Policy</strong></li>
+  <li>Select the Cognito_<em>PoolName</em>Auth_Policy that you just created in Step 9.9 and click on <strong>[Attach Policy]</strong></li>
+</ol>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="assets/js/lightbox.min.js"></script>
