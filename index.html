@@ -191,5 +191,70 @@ exports.handler = (event, context, callback) => {
   <img src="images/5.6-Cog-CreatePool.png" alt="Cognito - Create Pool" />
 </a>
 
+<h2>Step 6: Lambda - generateAuthUrl</h2>
+<h5>The authorization URL that end users visit to login is generated via the Google+ API. This API call requires the clientId and clientSecret created in Step 4. This API call could be made client side but in order to keep these values secret we will create a Lambda function to make the call from the "server-side".</h5>
+<ol>
+  <li>
+    Download and save the following zip file:
+    <a href="https://github.com/kyle138/oauthlambda-generateAuthUrl/releases/download/1.0.0/oauthlambda-generateAuthUrl.zip">https://github.com/kyle138/oauthlambda-generateAuthUrl/releases/download/1.0.0/oauthlambda-generateAuthUrl.zip</a>
+  </li>
+  <li>Login to the AWS Lambda console</li>
+  <li>Click on <strong>[Create a Lambda function]</strong></li>
+  <li>For Select Blueprint click on <strong>Blank Function</strong></li>
+  <li>For Configure Triggers click on <strong>[Next]</strong></li>
+  <li>For Name enter <strong>oauth-generateAuthUrl</strong></li>
+  <li>For Description enter <strong>Lambda backend for googleapis oauth2 generateAuthUrl</strong></li>
+  <li>For RunTime select <strong>Node.js 4.3</strong></li>
+  <li>For Code Entry Type select <strong>Upload a .ZIP file</strong></li>
+  <li>Click on <strong>[Upload]</strong> and select the oauthlambda-generateAuthUrl.zip file you downloaded in Step 6.1</li>
+  <li>
+    Create three Environment Variables using the exact KEY names below and substituting the values you downloaded in Step 4.10:
+    <table>
+      <tr>
+        <td>
+          <strong>clientId</strong>
+        </td>
+        <td>
+          Enter the Google API Client ID that you downloaded in Step 4.10
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>clientSecret</strong>
+        </td>
+        <td>
+          Enter the Google API Client Secret that you downloaded in Step 4.10
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <strong>redirectUrl</strong>
+        </td>
+        <td>
+          Enter the authorized redirect URI that you specified in Step 4.8.c
+        </td>
+      </tr>
+    </table>
+  </li>
+  <li>Leave Handler with the default <strong>index.handler</strong></li>
+  <li>For Role select <strong>Choose an existing role</strong></li>
+  <li>For Existing Role select <strong>lambda_basic_execution</strong></li>
+  <li>Leave Memory and Timeout with their default settings of <strong>128mb</strong> and <strong>3sec</strong></li>
+  <li>For VPC select <strong>No VPC</strong></li>
+  <li>Click on <strong>[Next]</strong></li>
+  <li>Review the settings and click on <strong>[Create function]</strong></li>
+  <li>Click on <strong>[Test]</strong> and in the results you should see your generated oauth2 google URL</li>
+</ol>
+<a href="images/6.4-Lam-genAuthUrl-blueprint.png" data-lightbox="Step6" data-title="Lambda - genAuthUrl - Blueprint">
+  <img src="images/6.4-Lam-genAuthUrl-blueprint.png" alt="Lambda - genAuthUrl - Blueprint" />
+</a>
+<a href="images/6.11-Lam-genAuthUrl-Configure1.png" data-lightbox="Step6" data-title="Lambda - genAuthUrl - Configure">
+  <img src="images/6.11-Lam-genAuthUrl-Configure1.png" alt="Lambda - Configure" />
+</a>
+<a href="images/6.17-Lam-genAuthUrl-Configure2.png" data-lightbox="Step6" data-title="Lambda - genAuthUrl - Configure">
+  <img src="images/6.17-Lam-genAuthUrl-Configure2.png" alt="Lambda - genAuthUrl - Configure" />
+</a>
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="assets/js/lightbox.min.js"></script>
