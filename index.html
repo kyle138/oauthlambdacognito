@@ -3,7 +3,7 @@ layout: default
 ---
 <img src="images/CognitoOAuth.png"/>
 
-<h5>In order to secure a single-page webapp hosted in S3 and backed up by Lambda/API Gateway, OAuth2 can be used with Cognito and a Web Identity Federation provider (eg: Google+, Facebook, etc). Steps 1-2 of this how-to will create a sample Lambda function served by API Gateway and secured using AWS-IAM. Steps 3-12 document the steps to allow a user to login to access the secured Lambda/API. If you already have a secured Lambda/API Gateway set up you can skip directly to Step 3 but I recommend reading through the first two Steps to understand how to secure your existing API Gateway resources. This how-to assumes previous experience with Lambda functions and roles.</h5>
+<h4>In order to secure a single-page webapp hosted in S3 and backed up by Lambda/API Gateway, OAuth2 can be used with Cognito and a Web Identity Federation provider (eg: Google+, Facebook, etc). Steps 1-2 of this how-to will create a sample Lambda function served by API Gateway and secured using AWS-IAM. Steps 3-12 document the steps to allow a user to login to access the secured Lambda/API. If you already have a secured Lambda/API Gateway set up you can skip directly to Step 3 but I recommend reading through the first two Steps to understand how to secure your existing API Gateway resources. This how-to assumes previous experience with Lambda functions and roles.</h4>
 
 <h2>Step 1: Create a sample Lambda function</h2>
 <h5>This function expects no inputs and returns a simple message. It will be placed behind the API Gateway resource created in Step 2 and secured with AWS-IAM. It will be used for testing Cognito Authentication.</h5>
