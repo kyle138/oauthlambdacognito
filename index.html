@@ -429,6 +429,39 @@ exports.handler = (event, context, callback) => {
   <li>Click on <strong>[Deploy]</strong></li>
   <li>This should take you to the <strong>prod Stage Editor</strong> page and the Invoke URL should be highlighted in blue at the top of the page. Copy this URL as you will need it in the Step 10.3</li>
 </ol>
+<a href="images/8.6-Apig-oauth-CreateAPI.png" data-lightbox="Step8" data-title="API Gateway - oauth - Create API">
+  <img src="images/8.6-Apig-oauth-CreateAPI.png" alt="API Gateway - oauth - Create API" />
+</a>
+<a href="images/8.7-Apig-oauth-CreateResource.png" data-lightbox="Step8" data-title="API Gateway - oauth - Create Resource">
+  <img src="images/8.7-Apig-oauth-CreateResource.png" alt="API Gateway - oauth - Create Resource" />
+</a>
+<a href="images/8.10-Apig-oauth-CreateResource.png" data-lightbox="Step8" data-title="API Gateway - oauth - Create Resource">
+  <img src="images/8.10-Apig-oauth-CreateResource.png" alt="API Gateway - oauth - Create Resource" />
+</a>
+<a href="images/8.11-Apig-oauth-CreateMethod.png" data-lightbox="Step8" data-title="API Gateway - oauth - Create Method">
+  <img src="images/8.11-Apig-oauth-CreateMethod.png" alt="API Gateway - oauth - Create Method" />
+</a>
+<a href="images/8.12-Apig-oauth-GET.png" data-lightbox="Step8" data-title="API Gateway - oauth - GET">
+  <img src="images/8.12-Apig-oauth-GET.png" alt="API Gateway - oauth - GET" />
+</a>
+<a href="images/8.16-Apig-oauth-Function.png" data-lightbox="Step8" data-title="API Gateway - oauth - Function">
+  <img src="images/8.16-Apig-oauth-Function.png" alt="API Gateway - oauth - Function" />
+</a>
+<a href="images/8.18-Apig-oauth-Test.png" data-lightbox="Step8" data-title="API Gateway - oauth - Test">
+  <img src="images/8.18-Apig-oauth-Test.png" alt="API Gateway - oauth - Test" />
+</a>
+<a href="images/8.23-Apig-oauth-CreateResource.png" data-lightbox="Step8" data-title="API Gateway - oauth - Create Resource">
+  <img src="images/8.23-Apig-oauth-CreateResource.png" alt="API Gateway - oauth - Create Resource" />
+</a>
+<a href="images/8.29-Apig-oauth-Function.png" data-lightbox="Step8" data-title="API Gateway - oauth - Function">
+  <img src="images/8.29-Apig-oauth-Function.png" alt="API Gateway - oauth - Function" />
+</a>
+<a href="images/8.34-Apig-oauth-QueryString.png" data-lightbox="Step8" data-title="API Gateway - oauth - Query String">
+  <img src="images/8.34-Apig-oauth-QueryString.png" alt="API Gateway - oauth - Query String" />
+</a>
+<a href="images/8.41-Apig-oauth-IntegrationRequest.png" data-lightbox="Step8" data-title="API Gateway - oauth - Integration Request">
+  <img src="images/8.41-Apig-oauth-IntegrationRequest.png" alt="API Gateway - oauth - Integration Request" />
+</a>
 
 <h2>Step 9: IAM Role for Cognito Authenticated Users</h2>
 <h5>When a user is authenticated and their Google+ token is exchanged for a Cognito token they are given a temporary IAM SecretAccessKey which assumes the Cognito_<em>PoolName</em>Auth_Role created earlier. To control what access these authenticated users have a policy has to be created and attached to that role.</h5>
@@ -465,6 +498,12 @@ exports.handler = (event, context, callback) => {
   <li>On the <strong>Permissions</strong> tab click on <strong>Attach Policy</strong></li>
   <li>Select the Cognito_<em>PoolName</em>Auth_Policy that you just created in Step 9.9 and click on <strong>[Attach Policy]</strong></li>
 </ol>
+<a href="images/9.9-IAM-CogAuth-Policy.png" data-lightbox="Step9" data-title="IAM - Create Policy">
+  <img src="images/9.9-IAM-CogAuth-Policy.png" alt="API Gateway - oauth - Create Policy" />
+</a>
+<a href="images/9.13-IAM-CogAuth-AttachPolicy.png" data-lightbox="Step9" data-title="IAM - Attach Policy">
+  <img src="images/9.13-IAM-CogAuth-AttachPolicy.png" alt="IAM - Attach Policy" />
+</a>
 
 <h2>Step 10: Upload Frontend Files to S3</h2>
 <h5>This is where it all comes together. Update the frontend code with information from the previous steps and upload it to S3.</h5>
