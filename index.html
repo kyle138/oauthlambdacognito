@@ -434,7 +434,7 @@ exports.handler = (event, context, callback) => {
   <li>For <strong>Policy Name</strong> enter <strong>Cognito_<em>PoolName</em>Auth_Policy</strong> replacing <em>PoolName</em> with the name you gave your Cognito Identity Pool in Step 5.3</li>
   <li>For <strong>Description</strong> enter <strong>'IAM Policy for authenticated Cognito users.'</strong></li>
   <li>
-    Enter the following for <strong>Policy Document</strong> making sure to replace the <strong>Resource</strong> value with the ARN string you copied in Step 2.22 :
+    Enter the following for <strong>Policy Document</strong> making sure to replace the <strong>Resource</strong> value with the ARN string you copied in Step 2.23 :
     <pre><code>
 {
   "Version": "2012-10-17",
@@ -489,7 +489,7 @@ var configuration =
 }
     </code></pre>
   </li>
-  <li>Open the <strong>javascript_{date}.zip</strong> file you downloaded in Step 2.37</li>
+  <li>Open the <strong>javascript_{date}.zip</strong> file you downloaded in Step 2.38</li>
   <li>This zip file should contain an apiGateway-js-sdk/ directory, from within it copy the <strong>apigClient.js</strong> file and the entire <strong>lib/</strong> directory into your oauthlambdacognito-example-1.0.0 directory</li>
   <li>Login to the AWS S3 console</li>
   <li>Click on the bucket you created in Step 1</li>
