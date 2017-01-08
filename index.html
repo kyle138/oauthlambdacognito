@@ -15,15 +15,15 @@ layout: default
   <li>For Description enter <strong>A starter AWS Lambda function</strong></li>
   <li>For Runtime make sure that <strong>Node.js 4.3</strong> is selected</li>
   <li>For Code entry type make sure that <strong>Edit code inline</strong> is selected and enter the following in the code box:
-    <code>
-      'use strict';
+    <pre><code>
+'use strict';
 
 console.log('Loading hello-world function');
 
 exports.handler = (event, context, callback) => {
     callback(null, "Greetings and salutations.");  // Make first contact
 };
-    </code>
+    </code></pre>
   </li>
   <li>For Handler make sure <strong>index.handler</strong> entered</li>
   <li>For Role select <strong>Choose an existing role</strong></li>
