@@ -72,7 +72,7 @@ exports.handler = (event, context, callback) => {
   <li>Select <strong>AWS_IAM</strong> and click on the checkmark</li>
   <li>Click on <strong><- Method Execution</strong></li>
   <li>In the <strong>Method Request</strong> box locate and copy down the <strong>ARN:</strong> string, this will be used in Step 9.7</li>
-  <li>In the Resources panel highlight the <strong>/sample</strong> resource</li>
+  <li>In the Resources panel highlight the <strong>GET</strong> method under the <strong>/sample</strong> resource</li>
   <li>Pull down the <strong>Actions</strong> menu and select <strong>Enable CORS</strong></li>
   <li>Click on <strong>[Enable CORS and replace existing CORS headers]</strong></li>
   <li>Click on <strong>[Yes, replace existing values]</strong></li>
@@ -499,7 +499,7 @@ exports.handler = (event, context, callback) => {
   <li>Select the Cognito_<em>PoolName</em>Auth_Policy that you just created in Step 9.9 and click on <strong>[Attach Policy]</strong></li>
 </ol>
 <a href="images/9.9-IAM-CogAuth-Policy.png" data-lightbox="Step9" data-title="IAM - Create Policy">
-  <img src="images/9.9-IAM-CogAuth-Policy.png" alt="API Gateway - oauth - Create Policy" />
+  <img src="images/9.9-IAM-CogAuth-Policy.png" alt="IAM - Create Policy" />
 </a>
 <a href="images/9.13-IAM-CogAuth-AttachPolicy.png" data-lightbox="Step9" data-title="IAM - Attach Policy">
   <img src="images/9.13-IAM-CogAuth-AttachPolicy.png" alt="IAM - Attach Policy" />
@@ -544,6 +544,13 @@ var configuration =
   <li>Click on the Google Login button and test if you can log in</li>
   <li><strong>ENJOY</strong></li>
 </ol>
+<a href="images/10.9-S3-Upload.png" data-lightbox="Step10" data-title="S3 - Upload Files">
+  <img src="images/10.9-S3-Upload.png" alt="S3 - Upload Files" />
+</a>
+<a href="images/10.10-S3-Uploaded.png" data-lightbox="Step10" data-title="S3 - Uploaded">
+  <img src="images/10.10-S3-Uploaded.png" alt="S3 - Uploaded" />
+</a>
+
 
 <h2>Credits:</h2>
 <h5>At the time of this project I couldn't find a single walkthrough for using Cognito with a webapp, only for iOS or Android. I found several how-tos describing parts of the answer and have pieced them together to create this document. I have included those sources below.</h5>
