@@ -1,2 +1,4 @@
 theme: jekyll-theme-slate
 locale: en_us
+name: "Secure Serverless Webapp"
+description: "How to setup a secure, serverless, single-page webapp using Google OAuth2, Lambda, API Gateway, and Cognito"
