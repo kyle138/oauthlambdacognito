@@ -1,5 +1,5 @@
 title: Secure serverless webapp
 description: "How to setup a secure, serverless, single-page webapp using Google OAuth2, Lambda, API Gateway, and Cognito"
 url: https://kyle138.github.io/oauthlambdacognito/
-image: "https://kyle138.github.io/oauthlambdacognito/images/CognitoOAuth.png"
+image: "images/CognitoOAuth.png"
 theme: jekyll-theme-slate
